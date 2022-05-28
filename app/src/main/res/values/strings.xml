@@ -10,5 +10,18 @@
     <string name="support_bottom_nav">support</string>
     <string name="fav_bottom_nav">bookmarks</string>
     <string name="filter_image_button_desc">filterImageButton</string>
+    <string name="diagram">Столбчатая диаграмма</string>
+    <string name="circle_diagram">Круговая диаграмма</string>
+    <string name="name">Илья Креслов</string>
+    <string name="github">https://github.com/sintatsky</string>
+    <string name="one_day">1 сутки</string>
+    <string name="two_days">2 суток</string>
+    <string name="three_days">3 суток</string>
+    <string name="four_days">4 суток</string>
+    <string name="night_count">Количество ночей</string>
+    <string name="duration">Продолжительность пребывания</string>
+    <string name="text_description">Продолжительность пребывания туристов в Санкт-Петербурге в 2021г</string>
+    <string name="bitcoin_info_text">Bitcoin info</string>
+    <string name="bitcoin_rate">Курс Bitcoin за год в USD</string>
 
 </resources>

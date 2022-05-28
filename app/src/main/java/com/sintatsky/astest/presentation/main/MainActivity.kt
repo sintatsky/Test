@@ -1,8 +1,8 @@
 package com.sintatsky.astest.presentation.main
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.mikepenz.materialdrawer.AccountHeader
@@ -30,7 +30,6 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var drawer: Drawer
     private lateinit var header: AccountHeader
-    // private lateinit var toolbar: Toolbar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -64,12 +63,10 @@ class MainActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        //  initFields()
         initFunc()
     }
 
     private fun initFunc() {
-        // setSupportActionBar(toolbar)
         createHeader()
         createDrawer()
     }
@@ -77,28 +74,28 @@ class MainActivity : AppCompatActivity() {
     private fun createDrawer() {
         drawer = DrawerBuilder()
             .withActivity(this)
-            // .withToolbar(toolbar)
             .withActionBarDrawerToggle(false)
             .withSelectedItem(-1)
+            .withTranslucentStatusBar(true)
             .withAccountHeader(header)
             .addDrawerItems(
                 PrimaryDrawerItem().withIdentifier(101)
                     .withIconTintingEnabled(true)
-                    .withName("Динамическая диаграмма")
+                    .withName(getString(R.string.diagram))
                     .withSelectable(true)
-                    .withIcon(R.drawable.ic_content),
+                    .withIcon(R.drawable.ic_diagram),
                 PrimaryDrawerItem().withIdentifier(102)
                     .withIconTintingEnabled(true)
-                    .withName("Динамическая диаграмма круглая")
+                    .withName(getString(R.string.circle_diagram))
                     .withSelectable(true)
-                    .withIcon(R.drawable.ic_content)
+                    .withIcon(R.drawable.ic_circle_diagram)
             ).withOnDrawerItemClickListener(object : Drawer.OnDrawerItemClickListener {
                 override fun onItemClick(
                     view: View?,
                     position: Int,
                     drawerItem: IDrawerItem<*>
                 ): Boolean {
-                    when(position){
+                    when (position) {
                         1 -> setupFragment(DynamicDiagramFragment.newInstance())
                         2 -> setupFragment(CircleDiagramFragment.newInstance())
                     }
@@ -106,6 +103,7 @@ class MainActivity : AppCompatActivity() {
                 }
             })
             .build()
+        drawer.drawerLayout.setStatusBarBackgroundColor(Color.LTGRAY)
     }
 
     private fun createHeader() {
@@ -113,15 +111,14 @@ class MainActivity : AppCompatActivity() {
             .withActivity(this)
             .withHeaderBackground(R.drawable.header)
             .addProfiles(
-                ProfileDrawerItem()
-                    .withName("Креслов Илья Константинович")
-                    .withEmail("https://github.com/sintatsky")
-            ).build()
+                ProfileDrawerItem().apply {
+                    withName(getString(R.string.name))
+                    withEmail(getString(R.string.github))
+                    withIcon(R.drawable.profile_icon)
+                }
+            ).withCompactStyle(true)
+            .build()
     }
-
-//    private fun initFields() {
-//        toolbar = binding.toolbar
-//    }
 
     private fun setupFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction()
