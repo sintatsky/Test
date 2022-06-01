@@ -25,8 +25,8 @@ class ContentFragment : Fragment() {
 
     private val fragListTitles = listOf(
         "reviews",
+        "news",
         "arts",
-        "home",
         "science",
         "us",
         "world"
